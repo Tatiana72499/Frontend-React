@@ -10,7 +10,9 @@ const App = () => {
     peach: "#FAAC5F",
     hotPink: "#FF8AAF",
     lilac: "#C988B9",
-    deepPurple: "#B257C9"
+    deepPurple: "#B257C9",
+    white: "#FFFFFF",
+    black: "#000000"
   }
 
   const lentes = [
@@ -72,7 +74,6 @@ const App = () => {
 
   const categorias = [
     { id: "todos", nombre: "Todos" },
-    { id: "cosmeticos", nombre: "Cosméticos" },
     { id: "cosplay", nombre: "Cosplay" },
     { id: "Estuches", nombre: "Estuches" },
     { id: "Liquido", nombre: "Líquido" },
@@ -132,13 +133,14 @@ const App = () => {
     backgroundColor: colors.white,
     color: "#333",
     paddingTop: "80px",
-    paddingBottom: "80px",
-    display: "flex",          // Añadido
-    flexDirection: "column",  // Añadido
-    alignItems: "center",     // Centra horizontalmente
+    paddingBottom: "120px",
+    display: "flex",         
+    flexDirection: "column",  
+    alignItems: "center", 
+    justifyContent: "center",     
     },
     header: {
-      background: `linear-gradient(135deg, ${colors.lightPink} 0%, ${colors.hotPink} 100%)`,
+      background: `linear-gradient(135deg, ${colors.lightPink} 100%, ${colors.hotPink} 20%)`,
       height: "80px",
       width: "100%",
       position: "fixed",
@@ -146,7 +148,7 @@ const App = () => {
       left: 0,
       right: 0,
       zIndex: 1000,
-      boxShadow: "0 2px 15px rgba(255, 243, 243, 0.74)",
+      boxShadow: "0 2px 15px rgba(0, 0, 0, 0.35)",
       display: "flex",
       justifyContent: "center",
     },
@@ -160,47 +162,48 @@ const App = () => {
       padding: "0 40px",
     },
     logo: {
-      color: colors.white,
+      color: colors.black,
       fontSize: "1.8rem",
       fontWeight: 800,
       margin: 0,
       letterSpacing: "1px",
-      textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+      textShadow: "0 2px 4px rgba(49, 47, 47, 0.32)",
     },
     headerIcons: {
       display: "flex",
-      gap: "20px",
+      gap: "30px",
       alignItems: "center",
     },
     iconButton: {
       background: "rgba(255,255,255,0.3)",
       border: "none",
-      borderRadius: "50%",
-      width: "44px",
-      height: "44px",
+      borderRadius: "500%",
+      width: "60px",
+      height: "60px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       cursor: "pointer",
       transition: "all 0.3s ease",
-      color: colors.deepPurple,
+      color: colors.black,
     },
     mainContent: {
       width: "100%",
-      maxWidth: "1900px",
-      padding: "60px 60px",
+      maxWidth: "3000 px",
+      padding: "70px 70px",
       boxSizing: "border-box",
     },
+    
     tituloSeccion: {
       textAlign: "center",
       color: colors.black,
-      fontSize: "2.2rem",
+      fontSize: "1.7rem",
       marginBottom: "16px",
       fontWeight: 700,
     },
     subtitulo: {
       textAlign: "center",
-      color: colors.lilac,
+      color: "#75757596",
       fontSize: "1.1rem",
       marginBottom: "40px",
       fontWeight: 400,
@@ -324,7 +327,7 @@ const App = () => {
       width: "100%",
     },
     bottomNav: {
-      position: "fixed",
+      position: "flex",
       bottom: 0,
       left: 0,
       right: 0,
@@ -333,36 +336,43 @@ const App = () => {
       boxShadow: "0 -2px 10px rgba(0,0,0,0.1)",
       zIndex: 900,
     },
-    navButtons: {
+     footer: {
+      backgroundColor: "#ffe6f0",
+      padding: "20px",
+      textAlign: "center",
+      position: "fixed",   
+      bottom: 0,
+      left: 0,
+      right: 0,
+      borderTop: "2px solid #ff66b2",
+      zIndex: 1000,
+    },
+    footerContent: {
+      maxWidth: "1200px",
+      margin: "0 auto",
+    },
+    footerText: {
+      margin: "10px 0",
+      color: "#444",
+      fontSize: "16px",
+    },
+    footerLink: {
+      color: "#ff3399",
+      textDecoration: "none",
+      fontWeight: "bold",
+    },
+    socialIcons: {
+      marginTop: "15px",
       display: "flex",
       justifyContent: "center",
-      gap: "40px",
-      maxWidth: "1400px",
-      margin: "0 auto",
-      padding: "0 40px",
+      gap: "20px",
+      fontSize: "22px",
     },
-    navButton: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      background: "none",
-      border: "none",
-      cursor: "pointer",
-      color: colors.deepPurple,
-      transition: "all 0.2s ease",
-      padding: "8px 16px",
-      borderRadius: "8px",
+    socialIcon: {
+      color: "#ff3399",
+      transition: "transform 0.3s ease, color 0.3s ease",
     },
-    navButtonActive: {
-      color: "white",
-      backgroundColor: colors.hotPink,
-      transform: "translateY(-2px)",
-    },
-    navButtonText: {
-      fontSize: "12px",
-      marginTop: "6px",
-      fontWeight: 600,
-    },
+
   }
 
   return (
@@ -370,7 +380,7 @@ const App = () => {
       {/* Header */}
       <header style={styles.header}>
         <div style={styles.headerContainer}>
-          <h1 style={styles.logo}>SeetyLens</h1>
+          <h1 style={styles.logo}>SweetyLens</h1>
           <div style={styles.headerIcons}>
             <button
               style={styles.iconButton}
@@ -410,7 +420,7 @@ const App = () => {
               onMouseEnter={(e) => {
                 if (selectedCategory !== categoria.id) {
                   e.target.style.transform = "translateY(-2px)"
-                  e.target.style.boxShadow = `0 5px 15px ${colors.lilac}80`
+                  e.target.style.boxShadow = `0 5px 15px ${colors.hotPink}80`
                 }
               }}
               onMouseLeave={(e) => {
@@ -478,52 +488,62 @@ const App = () => {
           ))}
         </div>
       </main>
+<div>
+  <footer style={styles.footer}>
+        <div style={styles.footerContent}>
+          <p style={styles.footerText}>
+            ¡Suscríbete y recibe todas nuestras ofertas!
+          </p>
+          <p style={styles.footerText}>
+            Whatsapp:{" "}
+            <a href="https://wa.me/5918042060" style={styles.footerLink}>
+              8042060
+            </a>{" "}
+            <br />
+            Correo:{" "}
+            <a href="mailto:SweetyShopLens@gmail.com" style={styles.footerLink}>
+              SweetyShopLens@gmail.com
+            </a>
+          </p>
 
-      {/* Navegación inferior */}
-      <nav style={styles.bottomNav}>
-        <div style={styles.navButtons}>
-          <button
-            style={{
-              ...styles.navButton,
-              ...(activeTab === "home" && styles.navButtonActive),
-            }}
-            onClick={() => setActiveTab("home")}
-          >
-            <HomeIcon />
-            <span style={styles.navButtonText}>Inicio</span>
-          </button>
-          <button
-            style={{
-              ...styles.navButton,
-              ...(activeTab === "search" && styles.navButtonActive),
-            }}
-            onClick={() => setActiveTab("search")}
-          >
-            <SearchIcon />
-            <span style={styles.navButtonText}>Buscar</span>
-          </button>
-          <button
-            style={{
-              ...styles.navButton,
-              ...(activeTab === "favorites" && styles.navButtonActive),
-            }}
-            onClick={() => setActiveTab("favorites")}
-          >
-            <HeartIcon />
-            <span style={styles.navButtonText}>Favoritos</span>
-          </button>
-          <button
-            style={{
-              ...styles.navButton,
-              ...(activeTab === "profile" && styles.navButtonActive),
-            }}
-            onClick={() => setActiveTab("profile")}
-          >
-            <UserIcon />
-            <span style={styles.navButtonText}>Perfil</span>
-          </button>
+          {/* Iconos de redes sociales */}
+          <div style={styles.socialIcons}>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.socialIcon}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            >
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.socialIcon}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://tiktok.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.socialIcon}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            >
+              <i className="fab fa-tiktok"></i>
+            </a>
+          </div>
         </div>
-      </nav>
+      </footer>
+</div>
+
+     
     </div>
   )
 }
